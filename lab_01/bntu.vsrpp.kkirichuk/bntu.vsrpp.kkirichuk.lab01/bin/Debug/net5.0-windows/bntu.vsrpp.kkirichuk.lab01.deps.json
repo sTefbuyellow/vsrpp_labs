@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "bntu.vsrpp.kkirichuk.lab01/1.0.0": {
+        "dependencies": {
+          "bntu.vsrpp.kkirichuk.Core": "1.0.0"
+        },
+        "runtime": {
+          "bntu.vsrpp.kkirichuk.lab01.dll": {}
+        }
+      },
+      "bntu.vsrpp.kkirichuk.Core/1.0.0": {
+        "runtime": {
+          "bntu.vsrpp.kkirichuk.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "bntu.vsrpp.kkirichuk.lab01/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "bntu.vsrpp.kkirichuk.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

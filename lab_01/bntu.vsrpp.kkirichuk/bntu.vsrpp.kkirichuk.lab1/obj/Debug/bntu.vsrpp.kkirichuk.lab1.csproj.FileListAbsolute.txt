@@ -1,0 +1,10 @@
+C:\Users\kiril\OneDrive\Рабочий стол\4kurs\vsrpp\lab_01\bntu.vsrpp.kkirichuk\bntu.vsrpp.kkirichuk.lab1\bin\Debug\bntu.vsrpp.kkirichuk.lab1.exe.config
+C:\Users\kiril\OneDrive\Рабочий стол\4kurs\vsrpp\lab_01\bntu.vsrpp.kkirichuk\bntu.vsrpp.kkirichuk.lab1\bin\Debug\bntu.vsrpp.kkirichuk.lab1.exe
+C:\Users\kiril\OneDrive\Рабочий стол\4kurs\vsrpp\lab_01\bntu.vsrpp.kkirichuk\bntu.vsrpp.kkirichuk.lab1\bin\Debug\bntu.vsrpp.kkirichuk.lab1.pdb
+C:\Users\kiril\OneDrive\Рабочий стол\4kurs\vsrpp\lab_01\bntu.vsrpp.kkirichuk\bntu.vsrpp.kkirichuk.lab1\obj\Debug\bntu.vsrpp.kkirichuk.lab1.csproj.AssemblyReference.cache
+C:\Users\kiril\OneDrive\Рабочий стол\4kurs\vsrpp\lab_01\bntu.vsrpp.kkirichuk\bntu.vsrpp.kkirichuk.lab1\obj\Debug\bntu.vsrpp.kkirichuk.lab1.Form1.resources
+C:\Users\kiril\OneDrive\Рабочий стол\4kurs\vsrpp\lab_01\bntu.vsrpp.kkirichuk\bntu.vsrpp.kkirichuk.lab1\obj\Debug\bntu.vsrpp.kkirichuk.lab1.Properties.Resources.resources
+C:\Users\kiril\OneDrive\Рабочий стол\4kurs\vsrpp\lab_01\bntu.vsrpp.kkirichuk\bntu.vsrpp.kkirichuk.lab1\obj\Debug\bntu.vsrpp.kkirichuk.lab1.csproj.GenerateResource.cache
+C:\Users\kiril\OneDrive\Рабочий стол\4kurs\vsrpp\lab_01\bntu.vsrpp.kkirichuk\bntu.vsrpp.kkirichuk.lab1\obj\Debug\bntu.vsrpp.kkirichuk.lab1.csproj.CoreCompileInputs.cache
+C:\Users\kiril\OneDrive\Рабочий стол\4kurs\vsrpp\lab_01\bntu.vsrpp.kkirichuk\bntu.vsrpp.kkirichuk.lab1\obj\Debug\bntu.vsrpp.kkirichuk.lab1.exe
+C:\Users\kiril\OneDrive\Рабочий стол\4kurs\vsrpp\lab_01\bntu.vsrpp.kkirichuk\bntu.vsrpp.kkirichuk.lab1\obj\Debug\bntu.vsrpp.kkirichuk.lab1.pdb
