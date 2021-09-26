@@ -34,6 +34,7 @@ namespace bntu.vsrpp.kkirichuk.lab01
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.FileMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.FileItemMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveRefactoredFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openXMLDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.digitObjectsComboBox = new System.Windows.Forms.ComboBox();
             this.charObjectsComboBox = new System.Windows.Forms.ComboBox();
@@ -43,6 +44,7 @@ namespace bntu.vsrpp.kkirichuk.lab01
             this.minCharButton = new System.Windows.Forms.Button();
             this.averageCharButton = new System.Windows.Forms.Button();
             this.maxCharButton = new System.Windows.Forms.Button();
+            this.saveXMLDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +70,8 @@ namespace bntu.vsrpp.kkirichuk.lab01
             // FileMenuItem1
             // 
             this.FileMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FileItemMenuItem1});
+            this.FileItemMenuItem1,
+            this.saveRefactoredFileToolStripMenuItem});
             this.FileMenuItem1.Name = "FileMenuItem1";
             this.FileMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.FileMenuItem1.Text = "File";
@@ -76,9 +79,16 @@ namespace bntu.vsrpp.kkirichuk.lab01
             // FileItemMenuItem1
             // 
             this.FileItemMenuItem1.Name = "FileItemMenuItem1";
-            this.FileItemMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.FileItemMenuItem1.Size = new System.Drawing.Size(173, 22);
             this.FileItemMenuItem1.Text = "LoadXml";
             this.FileItemMenuItem1.Click += new System.EventHandler(this.FileItemMenuItem1_Click);
+            // 
+            // saveRefactoredFileToolStripMenuItem
+            // 
+            this.saveRefactoredFileToolStripMenuItem.Name = "saveRefactoredFileToolStripMenuItem";
+            this.saveRefactoredFileToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.saveRefactoredFileToolStripMenuItem.Text = "SaveRefactoredFile";
+            this.saveRefactoredFileToolStripMenuItem.Click += new System.EventHandler(this.saveRefactoredFileToolStripMenuItem_Click);
             // 
             // openXMLDialog1
             // 
@@ -162,6 +172,11 @@ namespace bntu.vsrpp.kkirichuk.lab01
             this.maxCharButton.UseVisualStyleBackColor = true;
             this.maxCharButton.Click += new System.EventHandler(this.maxCharButton_Click);
             // 
+            // saveXMLDialog1
+            // 
+            this.saveXMLDialog1.InitialDirectory = "D://";
+            this.saveXMLDialog1.Tag = "xml";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -202,6 +217,8 @@ namespace bntu.vsrpp.kkirichuk.lab01
         private System.Windows.Forms.Button minCharButton;
         private System.Windows.Forms.Button averageCharButton;
         private System.Windows.Forms.Button maxCharButton;
+        private System.Windows.Forms.ToolStripMenuItem saveRefactoredFileToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveXMLDialog1;
     }
 }
 

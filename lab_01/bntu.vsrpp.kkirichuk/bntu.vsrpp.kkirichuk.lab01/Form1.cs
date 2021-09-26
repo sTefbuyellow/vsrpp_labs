@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Xml;
 using bntu.vsrpp.kkirichuk.Core;
 
 namespace bntu.vsrpp.kkirichuk.lab01
@@ -8,6 +9,7 @@ namespace bntu.vsrpp.kkirichuk.lab01
     public partial class Form1 : Form
     {
         private CustomXmlReader XmlReader;
+        private String sourceFileName;
 
         public Form1()
         {
@@ -22,9 +24,8 @@ namespace bntu.vsrpp.kkirichuk.lab01
             {
                 return;
             }
+            sourceFileName = fileName;
             XmlReader = new CustomXmlReader(fileName);
-            List<String> data = XmlReader.GetDocumentData(XmlReader.RootXDoc);
-
             List<String> digitData = XmlReader.GetNumericValuesList(XmlReader.RootXDoc);
             List<String> charData = XmlReader.GetCharValuesList(XmlReader.RootXDoc);
             if (digitData.Count > 0) {
@@ -44,6 +45,13 @@ namespace bntu.vsrpp.kkirichuk.lab01
             {
                 charObjectsComboBox.Enabled = false;
             }
+            XmlReader.refactor(XmlReader.RootXDoc, XmlReader.XDoc);
+        }
+
+        private void saveRefactoredFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XmlDocument xmlDocument = XmlReader.refactor(XmlReader.RootXDoc, XmlReader.XDoc);
+            xmlDocument.Save(sourceFileName.Substring(0, sourceFileName.Length-4) + "_output.xml");
         }
 
         private void minDigitButton_Click(object sender, EventArgs e)

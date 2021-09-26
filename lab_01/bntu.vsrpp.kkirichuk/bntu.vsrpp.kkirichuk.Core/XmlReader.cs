@@ -300,5 +300,58 @@ namespace bntu.vsrpp.kkirichuk.Core
             }
             return resultList;
         }
+
+        public XmlDocument refactor(XmlNode xmlNode, XmlDocument xmlDocument)
+        {
+            List<String> elementsList = new List<String> {"FirstName", "LastName", "Surname", "Score", "Email"};
+            foreach (XmlNode childXmlNode in xmlNode.ChildNodes)
+            {
+                List<String> tempValues = new List<string>();
+                XmlNode needsToBeDeleted = null;
+                foreach (XmlNode childChildXmlNode in childXmlNode.ChildNodes)
+                {
+                    if ("FullName".Equals(childChildXmlNode.Name))
+                    {
+                        int nameCount = 0;
+                        string[] names = childChildXmlNode.InnerText.Split(" ");
+                        foreach (String name in names)
+                        {
+                            XmlElement element = xmlDocument.CreateElement(elementsList.ElementAt(nameCount++));
+                            XmlText nameText = xmlDocument.CreateTextNode(name);
+                            element.AppendChild(nameText);
+                            childXmlNode.InsertBefore(element, childChildXmlNode);
+                        }
+                        tempValues.AddRange(new string[] { "FirstName", "LastName", "Surname"});
+                        needsToBeDeleted = childChildXmlNode;
+                    }
+                    else
+                    {
+                        tempValues.Add(childChildXmlNode.Name);
+                    }
+                }
+                tempValues = elementsList.Except(tempValues).ToList();
+                if (tempValues.Count > 0)
+                {
+                    foreach (String name in tempValues)
+                    {
+                        XmlElement element = xmlDocument.CreateElement(name);
+                        XmlText nameText;
+                        if ("Score".Equals(name)){
+                            nameText = xmlDocument.CreateTextNode("0");
+                        }
+                        else{
+                           nameText = xmlDocument.CreateTextNode("NA");
+                        }
+                        element.AppendChild(nameText);
+                        childXmlNode.AppendChild(element);
+                    }
+                }
+                if (needsToBeDeleted != null)
+                {
+                    childXmlNode.RemoveChild(needsToBeDeleted);
+                }
+            }
+            return xmlDocument;
+        } 
     }
 }
