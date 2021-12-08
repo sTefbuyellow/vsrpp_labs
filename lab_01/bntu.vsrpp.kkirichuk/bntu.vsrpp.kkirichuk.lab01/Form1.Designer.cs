@@ -52,9 +52,9 @@ namespace bntu.vsrpp.kkirichuk.lab01
             // 
             this.displayListBox.FormattingEnabled = true;
             this.displayListBox.ItemHeight = 15;
-            this.displayListBox.Location = new System.Drawing.Point(386, 27);
+            this.displayListBox.Location = new System.Drawing.Point(345, 43);
             this.displayListBox.Name = "displayListBox";
-            this.displayListBox.Size = new System.Drawing.Size(402, 409);
+            this.displayListBox.Size = new System.Drawing.Size(184, 229);
             this.displayListBox.TabIndex = 0;
             // 
             // MenuStrip
@@ -63,7 +63,7 @@ namespace bntu.vsrpp.kkirichuk.lab01
             this.FileMenuItem1});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.Size = new System.Drawing.Size(800, 24);
+            this.MenuStrip.Size = new System.Drawing.Size(546, 24);
             this.MenuStrip.TabIndex = 1;
             this.MenuStrip.Text = "File";
             // 
@@ -181,7 +181,7 @@ namespace bntu.vsrpp.kkirichuk.lab01
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(546, 284);
             this.Controls.Add(this.maxCharButton);
             this.Controls.Add(this.averageCharButton);
             this.Controls.Add(this.minCharButton);

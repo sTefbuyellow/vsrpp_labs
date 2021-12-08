@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bntu.vsrpp.kkirichuk.Core", "bntu.vsrpp.kkirichuk.Core\bntu.vsrpp.kkirichuk.Core.csproj", "{8FA57ACB-3769-4DA9-A451-9275C9C5D901}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bntu.vsrpp.kkirichuk.lab01", "bntu.vsrpp.kkirichuk.lab01\bntu.vsrpp.kkirichuk.lab01.csproj", "{CE6983BC-B13E-4822-BD4E-693F63900153}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bntu.vsrpp.kkirichuk.lab01", "bntu.vsrpp.kkirichuk.lab01\bntu.vsrpp.kkirichuk.lab01.csproj", "{CE6983BC-B13E-4822-BD4E-693F63900153}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bntu.vsrpp.kkirichuk.lab2", "bntu.vsrpp.kkirichuk.lab2\bntu.vsrpp.kkirichuk.lab2.csproj", "{06F81EE2-623B-4F47-A3A1-3F39A202004D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CE6983BC-B13E-4822-BD4E-693F63900153}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE6983BC-B13E-4822-BD4E-693F63900153}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE6983BC-B13E-4822-BD4E-693F63900153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06F81EE2-623B-4F47-A3A1-3F39A202004D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06F81EE2-623B-4F47-A3A1-3F39A202004D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06F81EE2-623B-4F47-A3A1-3F39A202004D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06F81EE2-623B-4F47-A3A1-3F39A202004D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Xml;
 using bntu.vsrpp.kkirichuk.Core;
 
 namespace bntu.vsrpp.kkirichuk.lab01
 {
     public partial class Form1 : Form
     {
-        private CustomXmlReader XmlReader;
+        private CustomXmlData XmlData;
         private String sourceFileName;
 
         public Form1()
@@ -25,9 +24,9 @@ namespace bntu.vsrpp.kkirichuk.lab01
                 return;
             }
             sourceFileName = fileName;
-            XmlReader = new CustomXmlReader(fileName);
-            List<String> digitData = XmlReader.GetNumericValuesList(XmlReader.RootXDoc);
-            List<String> charData = XmlReader.GetCharValuesList(XmlReader.RootXDoc);
+            XmlData = new CustomXmlData(fileName);
+            List<String> digitData = XmlData.RootXDoc.GetNumericValuesList();
+            List<String> charData = XmlData.RootXDoc.GetCharValuesList();
             if (digitData.Count > 0) {
                 digitObjectsComboBox.Enabled = true;
                 this.digitObjectsComboBox.Items.AddRange(digitData.ToArray());
@@ -45,13 +44,11 @@ namespace bntu.vsrpp.kkirichuk.lab01
             {
                 charObjectsComboBox.Enabled = false;
             }
-            XmlReader.refactor(XmlReader.RootXDoc, XmlReader.XDoc);
         }
 
         private void saveRefactoredFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            XmlDocument xmlDocument = XmlReader.refactor(XmlReader.RootXDoc, XmlReader.XDoc);
-            xmlDocument.Save(sourceFileName.Substring(0, sourceFileName.Length-4) + "_output.xml");
+            XmlData.RootXDoc.save(XmlData.XDoc, sourceFileName);
         }
 
         private void minDigitButton_Click(object sender, EventArgs e)
@@ -62,7 +59,7 @@ namespace bntu.vsrpp.kkirichuk.lab01
                 return;
             }
             String itemName = digitObjectsComboBox.SelectedItem.ToString();
-            displayListBox.Items.Add("Min " + itemName + " value: " + XmlReader.GetMinValue(XmlReader.RootXDoc, itemName));
+            displayListBox.Items.Add("Min " + itemName + " value: " + XmlData.RootXDoc.GetMinValue(itemName));
         }
 
         private void averageDigitButton_Click(object sender, EventArgs e)
@@ -73,7 +70,7 @@ namespace bntu.vsrpp.kkirichuk.lab01
                 return;
             }
             String itemName = digitObjectsComboBox.SelectedItem.ToString();
-            displayListBox.Items.Add("Average " + itemName + " value: " + XmlReader.GetAverage(XmlReader.RootXDoc, itemName));
+            displayListBox.Items.Add("Average " + itemName + " value: " + XmlData.RootXDoc.GetAverage(itemName));
         }
 
         private void maxDigitButton_Click(object sender, EventArgs e)
@@ -84,7 +81,7 @@ namespace bntu.vsrpp.kkirichuk.lab01
                 return;
             }
             String itemName = digitObjectsComboBox.SelectedItem.ToString();
-            displayListBox.Items.Add("Max " + itemName + " value: " + XmlReader.GetMaxValue(XmlReader.RootXDoc, itemName));
+            displayListBox.Items.Add("Max " + itemName + " value: " + XmlData.RootXDoc.GetMaxValue(itemName));
         }
 
         private void minCharButton_Click(object sender, EventArgs e)
@@ -95,7 +92,7 @@ namespace bntu.vsrpp.kkirichuk.lab01
                 return;
             }
             String itemName = charObjectsComboBox.SelectedItem.ToString();
-            displayListBox.Items.Add("Min " + itemName + " length: " + XmlReader.GetMinLength(XmlReader.RootXDoc, itemName));
+            displayListBox.Items.Add("Min " + itemName + " length: " + XmlData.RootXDoc.GetMinLength(itemName));
         }
 
         private void averageCharButton_Click(object sender, EventArgs e)
@@ -106,7 +103,7 @@ namespace bntu.vsrpp.kkirichuk.lab01
                 return;
             }
             String itemName = charObjectsComboBox.SelectedItem.ToString();
-            displayListBox.Items.Add("Average " + itemName + " length: " + XmlReader.GetAverageLength(XmlReader.RootXDoc, itemName));
+            displayListBox.Items.Add("Average " + itemName + " length: " + XmlData.RootXDoc.GetAverageLength(itemName));
         }
 
         private void maxCharButton_Click(object sender, EventArgs e)
@@ -117,7 +114,7 @@ namespace bntu.vsrpp.kkirichuk.lab01
                 return;
             }
             String itemName = charObjectsComboBox.SelectedItem.ToString();
-            displayListBox.Items.Add("Max " + itemName + " length: " + XmlReader.GetMaxLength(XmlReader.RootXDoc, itemName));
+            displayListBox.Items.Add("Max " + itemName + " length: " + XmlData.RootXDoc.GetMaxLength(itemName));
         }
     }
 }

@@ -3,25 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 
-
 namespace bntu.vsrpp.kkirichuk.Core
 {
-    public class CustomXmlReader
+    public static class CustomXmlProcessor
     {
-        public XmlDocument XDoc { get; set; }
-        public XmlNode RootXDoc { get; set; }
-        public CustomXmlReader(String path)
-        {
-            this.XDoc = new XmlDocument();
-            XDoc.Load(path);
-            RootXDoc = XDoc.DocumentElement;
-        }
 
-        public double GetAverageLength(XmlNode xmlNode, String objectName)
+        public static double GetAverageLength(this XmlNode xmlNode, String objectName)
         {
             return Math.Round(GetLengthSumm(xmlNode, objectName, 0) / GetCount(xmlNode, objectName, 0), 3);
         }
-        public double GetLengthSumm(XmlNode xmlNode, String objectName, double startSumm)
+        public static double GetLengthSumm(this XmlNode xmlNode, String objectName, double startSumm)
         {
             foreach (XmlNode childXmlNode in xmlNode.ChildNodes)
             {
@@ -38,12 +29,12 @@ namespace bntu.vsrpp.kkirichuk.Core
         }
 
 
-        public double GetAverage(XmlNode xmlNode, String objectName)
+        public static double GetAverage(this XmlNode xmlNode, String objectName)
         {
             return Math.Round(GetSumm(xmlNode, objectName, 0) / GetCount(xmlNode, objectName, 0), 3);
         }
 
-        public double GetSumm(XmlNode xmlNode, String objectName, double startSumm)
+        public static double GetSumm(this XmlNode xmlNode, String objectName, double startSumm)
         {
             foreach (XmlNode childXmlNode in xmlNode.ChildNodes)
             {
@@ -59,7 +50,7 @@ namespace bntu.vsrpp.kkirichuk.Core
             return startSumm;
         }
 
-        public int GetCount(XmlNode xmlNode, String objectName, int startCount)
+        public static int GetCount(this XmlNode xmlNode, String objectName, int startCount)
         {
             foreach (XmlNode childXmlNode in xmlNode.ChildNodes)
             {
@@ -75,13 +66,13 @@ namespace bntu.vsrpp.kkirichuk.Core
             return startCount;
         }
 
-        public double GetMaxLength(XmlNode xmlNode, String objectName)
+        public static double GetMaxLength(this XmlNode xmlNode, String objectName)
         {
             String str = GetStartValue(xmlNode, objectName);
             return CountMaxLength(xmlNode, objectName, str.Length);
         }
 
-        public int CountMaxLength(XmlNode xmlNode, String objectName, int maxValue)
+        public static int CountMaxLength(this XmlNode xmlNode, String objectName, int maxValue)
         {
             foreach (XmlNode childXmlNode in xmlNode)
             {
@@ -101,13 +92,13 @@ namespace bntu.vsrpp.kkirichuk.Core
             return maxValue;
         }
 
-        public double GetMinLength(XmlNode xmlNode, String objectName)
+        public static double GetMinLength(this XmlNode xmlNode, String objectName)
         {
             String str = GetStartValue(xmlNode, objectName);
             return CountMinLength(xmlNode, objectName, str.Length);
         }
 
-        public int CountMinLength(XmlNode xmlNode, String objectName, int minValue)
+        public static int CountMinLength(this XmlNode xmlNode, String objectName, int minValue)
         {
             foreach (XmlNode childXmlNode in xmlNode)
             {
@@ -126,13 +117,13 @@ namespace bntu.vsrpp.kkirichuk.Core
             }
             return minValue;
         }
-        public double GetMaxValue(XmlNode xmlNode, String objectName)
+        public static double GetMaxValue(this XmlNode xmlNode, String objectName)
         {
             double maxValue = Convert.ToDouble(GetStartValue(xmlNode, objectName));
             return CountMaxValue(xmlNode, objectName, maxValue);
         }
 
-        public double CountMaxValue(XmlNode xmlNode, String objectName, double maxValue)
+        public static double CountMaxValue(this XmlNode xmlNode, String objectName, double maxValue)
         {
             foreach (XmlNode childXmlNode in xmlNode.ChildNodes)
             {
@@ -152,13 +143,13 @@ namespace bntu.vsrpp.kkirichuk.Core
             return maxValue;
         }
 
-        public double GetMinValue(XmlNode xmlNode, String objectName)
+        public static double GetMinValue(this XmlNode xmlNode, String objectName)
         {
             double minValue = Convert.ToDouble(GetStartValue(xmlNode, objectName));
             return CountMinValue(xmlNode, objectName, minValue);
         }
 
-        public double CountMinValue(XmlNode xmlNode, String objectName, double minValue)
+        public static double CountMinValue(this XmlNode xmlNode, String objectName, double minValue)
         {
             foreach (XmlNode childXmlNode in xmlNode.ChildNodes)
             {
@@ -178,7 +169,7 @@ namespace bntu.vsrpp.kkirichuk.Core
             return minValue;
         }
 
-        public string GetStartValue(XmlNode xmlNode, String objectName)
+        public static string GetStartValue(this XmlNode xmlNode, String objectName)
         {
             if (xmlNode.FirstChild.FirstChild.HasChildNodes)
             {
@@ -197,14 +188,14 @@ namespace bntu.vsrpp.kkirichuk.Core
             return "";
         }
 
-        public List<String> GetDocumentData(XmlNode xml)
+        public static List<String> GetDocumentData(XmlNode xml)
         {
             List<String> data = new List<String>();
             FillList(xml, data);
             return data;
         }
 
-        private void FillList(XmlNode xmlNode, List<String> list)
+        private static void FillList(this XmlNode xmlNode, List<String> list)
         {
             if (xmlNode.HasChildNodes)
             {
@@ -219,15 +210,14 @@ namespace bntu.vsrpp.kkirichuk.Core
             }
         }
 
-        public List<String> GetNumericValuesList(XmlNode xml)
+        public static List<String> GetNumericValuesList(this XmlNode xml)
         {
-            
             List<String> numericValues = new List<String>();
             FillNumericObjectsList(xml, numericValues);
             return getSameObjectsList(xml, numericValues);
         }
 
-        private void FillNumericObjectsList(XmlNode xmlNode, List<String> list)
+        private static void FillNumericObjectsList(this XmlNode xmlNode, List<String> list)
         {
             if (xmlNode.HasChildNodes)
             {
@@ -240,7 +230,8 @@ namespace bntu.vsrpp.kkirichuk.Core
             {
                 double res;
                 bool isDigit = Double.TryParse(xmlNode.InnerText, out res);
-                if(isDigit){
+                if (isDigit)
+                {
                     if (list.BinarySearch(xmlNode.ParentNode.Name) < 0)
                     {
                         list.Add(xmlNode.ParentNode.Name);
@@ -249,7 +240,7 @@ namespace bntu.vsrpp.kkirichuk.Core
             }
         }
 
-        public List<String> GetCharValuesList(XmlNode xml)
+        public static List<String> GetCharValuesList(this XmlNode xml)
         {
 
             List<String> charValues = new List<String>();
@@ -257,7 +248,7 @@ namespace bntu.vsrpp.kkirichuk.Core
             return getSameObjectsList(xml, charValues);
         }
 
-        private void FillCharObjectsList(XmlNode xmlNode, List<String> list)
+        private static void FillCharObjectsList(this XmlNode xmlNode, List<String> list)
         {
             list.Sort();
             if (xmlNode.HasChildNodes)
@@ -281,8 +272,8 @@ namespace bntu.vsrpp.kkirichuk.Core
             }
         }
 
-       
-        private List<String> getSameObjectsList(XmlNode xmlNode, List<String> values)
+
+        private static List<String> getSameObjectsList(this XmlNode xmlNode, List<String> values)
         {
             List<String> resultList = values.ToList();
             foreach (XmlNode childXmlNode in xmlNode.ChildNodes)
@@ -300,58 +291,5 @@ namespace bntu.vsrpp.kkirichuk.Core
             }
             return resultList;
         }
-
-        public XmlDocument refactor(XmlNode xmlNode, XmlDocument xmlDocument)
-        {
-            List<String> elementsList = new List<String> {"FirstName", "LastName", "Surname", "Score", "Email"};
-            foreach (XmlNode childXmlNode in xmlNode.ChildNodes)
-            {
-                List<String> tempValues = new List<string>();
-                XmlNode needsToBeDeleted = null;
-                foreach (XmlNode childChildXmlNode in childXmlNode.ChildNodes)
-                {
-                    if ("FullName".Equals(childChildXmlNode.Name))
-                    {
-                        int nameCount = 0;
-                        string[] names = childChildXmlNode.InnerText.Split(" ");
-                        foreach (String name in names)
-                        {
-                            XmlElement element = xmlDocument.CreateElement(elementsList.ElementAt(nameCount++));
-                            XmlText nameText = xmlDocument.CreateTextNode(name);
-                            element.AppendChild(nameText);
-                            childXmlNode.InsertBefore(element, childChildXmlNode);
-                        }
-                        tempValues.AddRange(new string[] { "FirstName", "LastName", "Surname"});
-                        needsToBeDeleted = childChildXmlNode;
-                    }
-                    else
-                    {
-                        tempValues.Add(childChildXmlNode.Name);
-                    }
-                }
-                tempValues = elementsList.Except(tempValues).ToList();
-                if (tempValues.Count > 0)
-                {
-                    foreach (String name in tempValues)
-                    {
-                        XmlElement element = xmlDocument.CreateElement(name);
-                        XmlText nameText;
-                        if ("Score".Equals(name)){
-                            nameText = xmlDocument.CreateTextNode("0");
-                        }
-                        else{
-                           nameText = xmlDocument.CreateTextNode("NA");
-                        }
-                        element.AppendChild(nameText);
-                        childXmlNode.AppendChild(element);
-                    }
-                }
-                if (needsToBeDeleted != null)
-                {
-                    childXmlNode.RemoveChild(needsToBeDeleted);
-                }
-            }
-            return xmlDocument;
-        } 
     }
 }
